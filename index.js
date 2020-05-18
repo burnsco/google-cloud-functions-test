@@ -20,3 +20,21 @@ exports.screenshot = async (req, res) => {
 
   context.close()
 }
+
+exports.anime = async (req, res) => {
+  const url = req.query.url || 'https://nyaa.si/?s=seeders&o=desc'
+
+  const browser = await browserPromise
+  const context = await browser.createIncognitoBrowserContext()
+  const page = await context.newPage()
+
+  await page.goto(url)
+  await page.waitFor('.table-responsive')
+
+  const results = await page.$$eval('.table-responsive', (rows) => {
+    return rows
+  })
+
+  console.log(results)
+  context.close()
+}

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-screenshot": "functions-framework --target=screenshot",
+    "start-anime": "functions-framework --target=anime",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
